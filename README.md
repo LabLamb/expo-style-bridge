@@ -12,6 +12,7 @@ npm install expo-style-bridge
 
 ```typescript
 import { convertToSwiftUIModifiers } from 'expo-style-bridge';
+import { Button } from '@expo/ui/swift-ui';
 
 const style = {
   padding: 16,
@@ -22,7 +23,11 @@ const style = {
 };
 
 const modifiers = convertToSwiftUIModifiers(style);
-// Returns array of SwiftUI ViewModifier objects
+
+// Use the modifiers with a SwiftUI component
+<Button modifiers={modifiers}>
+  Click me
+</Button>
 ```
 
 ## Supported Style Properties
