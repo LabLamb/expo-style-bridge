@@ -8,13 +8,55 @@ Convert React Native styles into SwiftUI or Jetpack Compose modifiers.
 npm install expo-style-bridge
 ```
 
-## Description
+## Usage
 
-A library that bridges React Native styling to native platform UI frameworks. This package helps convert React Native StyleSheet definitions into native SwiftUI modifiers and Jetpack Compose modifiers.
+```typescript
+import { convertToSwiftUIModifiers } from 'expo-style-bridge';
+
+const style = {
+  padding: 16,
+  opacity: 0.8,
+  zIndex: 10,
+  display: 'none',
+  overflow: 'hidden'
+};
+
+const modifiers = convertToSwiftUIModifiers(style);
+// Returns array of SwiftUI ViewModifier objects
+```
+
+## Supported Style Properties
+
+- **Padding**: `padding`, `paddingHorizontal`, `paddingVertical`, `paddingTop`, `paddingBottom`, `paddingLeft`, `paddingRight`
+- **Opacity**: `opacity`
+- **Layout**: `zIndex`
+- **Visibility**: `display` (maps to `hidden()`)
+- **Clipping**: `overflow` (maps to `clipped()`)
+
+## Project Structure
+
+```
+src/
+├── index.ts              # Main converter with reducer pattern
+├── types.ts              # TypeScript type definitions
+└── mappers/              # Individual style converters
+    ├── padding/
+    ├── opacity/
+    ├── zIndex/
+    ├── hidden/
+    └── clipped/
+```
+
+Each mapper is a self-contained converter with tests. To add a new converter:
+1. Create a folder in `src/mappers/`
+2. Implement the converter function
+3. Add tests
+4. Integrate into the reducer chain in `src/index.ts`
 
 ## Requirements
 
 - `@expo/ui` >= 0.2.0-beta.7
+- `react-native` >= 0.82.0
 
 ## License
 

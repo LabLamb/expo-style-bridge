@@ -18,7 +18,8 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "peerDependencies": {
-    "@expo/ui": ">=0.2.0-beta.7 <1.0.0"
+    "@expo/ui": ">=0.2.0-beta.7",
+    "react-native": ">=0.82.0"
   },
   "keywords": [
     "expo",
@@ -29,5 +30,12 @@
     "bridge",
     "stylesheet",
     "modifier"
-  ]
+  ],
+  "devDependencies": {
+    "@babel/preset-env": "^7.28.5",
+    "@babel/preset-typescript": "^7.28.5",
+    "@types/jest": "^30.0.0",
+    "jest": "^30.2.0",
+    "react-native": "^0.82.1"
+  }
 }
