@@ -1,5 +1,5 @@
 import { padding, ViewModifier } from "@expo/ui/swift-ui/modifiers";
-import { PaddingStyle } from "@/types";
+import { PaddingStyle } from "@/mappers/styles";
 
 export default function convertPadding(style: PaddingStyle): ViewModifier {
   return padding({

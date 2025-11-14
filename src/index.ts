@@ -1,60 +1,14 @@
 import { ViewModifier } from "@expo/ui/swift-ui/modifiers";
-import { DirectMappableStyle } from "@/types";
-import convertPadding from "@/mappers/padding/padding";
-import convertOpacity from "@/mappers/opacity/opacity";
-import convertZIndex from "@/mappers/zIndex/zIndex";
-import convertHidden from "@/mappers/hidden/hidden";
-import convertClipped from "@/mappers/clipped/clipped";
 
-type ConverterFunction = (
-  style: DirectMappableStyle,
-  modifiers: ViewModifier[]
-) => ViewModifier[];
+import { DirectMappableStyle, ConverterFunction } from "@/types";
+import { swiftUI } from "@/mappers";
 
 const converters: ConverterFunction[] = [
-  // Padding converter
-  (style, modifiers) => {
-    if (
-      style.padding !== undefined ||
-      style.paddingHorizontal !== undefined ||
-      style.paddingVertical !== undefined ||
-      style.paddingTop !== undefined ||
-      style.paddingBottom !== undefined ||
-      style.paddingLeft !== undefined ||
-      style.paddingRight !== undefined
-    ) {
-      return [...modifiers, convertPadding(style)];
-    }
-    return modifiers;
-  },
-  // Opacity converter
-  (style, modifiers) => {
-    if (style.opacity !== undefined) {
-      return [...modifiers, convertOpacity(style)];
-    }
-    return modifiers;
-  },
-  // ZIndex converter
-  (style, modifiers) => {
-    if (style.zIndex !== undefined) {
-      return [...modifiers, convertZIndex(style)];
-    }
-    return modifiers;
-  },
-  // Hidden converter
-  (style, modifiers) => {
-    if (style.display !== undefined) {
-      return [...modifiers, convertHidden(style)];
-    }
-    return modifiers;
-  },
-  // Clipped converter
-  (style, modifiers) => {
-    if (style.overflow !== undefined) {
-      return [...modifiers, convertClipped(style)];
-    }
-    return modifiers;
-  },
+  swiftUI.paddingConverter,
+  swiftUI.opacityConverter,
+  swiftUI.zIndexConverter,
+  swiftUI.hiddenConverter,
+  swiftUI.clippedConverter,
   // Add more converters here as they are implemented
 ];
 
@@ -65,4 +19,10 @@ export function convertToSwiftUIModifiers(
     (modifiers, converter) => converter(style, modifiers),
     [] as ViewModifier[]
   );
+}
+
+export function convertToJetpackComposeModifiers(
+  style: DirectMappableStyle
+): ViewModifier[] {
+  return [];
 }

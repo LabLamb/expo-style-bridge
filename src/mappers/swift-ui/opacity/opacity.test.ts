@@ -1,6 +1,6 @@
 import { opacity } from "@expo/ui/swift-ui/modifiers";
 import convertOpacity from "./opacity";
-import { OpacityStyle } from "../../types";
+import { OpacityStyle } from "../../../types";
 
 describe("convertOpacity", () => {
   it("should convert opacity value", () => {
