@@ -11,4 +11,5 @@ export type {
   ZIndexStyle,
   VisibilityStyle,
   ClippingStyle,
+  ColorStyle,
 } from "./styles";

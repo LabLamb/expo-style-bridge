@@ -9,3 +9,4 @@ export type { OpacityStyle } from "./opacity";
 export type { ZIndexStyle } from "./zIndex";
 export type { VisibilityStyle } from "./visibility";
 export type { ClippingStyle } from "./clipping";
+export type { ColorStyle } from "./color";

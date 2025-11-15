@@ -11,6 +11,7 @@ import type {
   ZIndexStyle,
   VisibilityStyle,
   ClippingStyle,
+  ColorStyle,
 } from "@/mappers";
 
 /**
@@ -32,6 +33,7 @@ export type DirectMappableStyle = PaddingStyle &
   ZIndexStyle &
   VisibilityStyle &
   ClippingStyle &
+  ColorStyle &
   DimensionStyle &
   Pick<FlexStyle, "aspectRatio"> &
   Pick<TransformsStyle, "transform"> &

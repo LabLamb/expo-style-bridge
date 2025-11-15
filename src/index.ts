@@ -9,6 +9,8 @@ const converters: ConverterFunction[] = [
   swiftUI.zIndexConverter,
   swiftUI.hiddenConverter,
   swiftUI.clippedConverter,
+  swiftUI.foregroundColorConverter,
+  swiftUI.backgroundColorConverter,
   // Add more converters here as they are implemented
 ];
 
