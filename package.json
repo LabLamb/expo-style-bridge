@@ -1,6 +1,6 @@
 {
   "name": "expo-style-bridge",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Convert React Native styles into SwiftUI or Jetpack Compose modifiers.",
   "homepage": "https://github.com/LabLamb/expo-style-bridge#readme",
   "bugs": {
@@ -14,12 +14,17 @@
   "author": "LabLamb <lablambworks@gmail.com> (https://github.com/LabLamb)",
   "main": "build/index.js",
   "types": "build/index.d.ts",
+  "files": [
+    "build"
+  ],
   "scripts": {
+    "build": "tsc && tsc-alias",
+    "prepublishOnly": "pnpm build",
     "test": "jest"
   },
   "peerDependencies": {
     "@expo/ui": ">=0.2.0-beta.7",
-    "react-native": ">=0.82.0"
+    "react-native": ">=0.81.5"
   },
   "keywords": [
     "expo",
@@ -62,6 +67,7 @@
     "@babel/preset-typescript": "^7.28.5",
     "@types/jest": "^30.0.0",
     "jest": "^30.2.0",
-    "react-native": "^0.82.1"
+    "react-native": "^0.82.1",
+    "tsc-alias": "^1.8.16"
   }
 }

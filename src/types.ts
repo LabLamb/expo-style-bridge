@@ -14,6 +14,16 @@ import type {
   ColorStyle,
 } from "@/mappers";
 
+// Re-export style types for external use
+export type {
+  PaddingStyle,
+  OpacityStyle,
+  ZIndexStyle,
+  VisibilityStyle,
+  ClippingStyle,
+  ColorStyle,
+};
+
 /**
  * Strict type containing ONLY the directly mappable style properties
  * from SwiftUI modifiers to React Native styles.

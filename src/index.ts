@@ -27,3 +27,15 @@ export function convertToJetpackComposeModifiers(
 ): ViewModifier[] {
   return [];
 }
+
+// Export types for external use
+export type {
+  DirectMappableStyle,
+  ConverterFunction,
+  PaddingStyle,
+  OpacityStyle,
+  ZIndexStyle,
+  VisibilityStyle,
+  ClippingStyle,
+  ColorStyle,
+} from "@/types";
