@@ -1,5 +1,4 @@
 import { ViewModifier } from "@expo/ui/swift-ui/modifiers";
-
 import { DirectMappableStyle, ConverterFunction } from "@/types";
 import { swiftUI } from "@/mappers";
 
