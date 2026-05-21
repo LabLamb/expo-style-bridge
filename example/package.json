@@ -1,0 +1,21 @@
+{
+  "name": "example",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "expo start --dev-client",
+    "android": "expo start --android --dev-client",
+    "ios": "expo start --ios --dev-client",
+    "web": "expo start --web"
+  },
+  "dependencies": {
+    "@expo/ui": "55.0.17",
+    "expo": "~55.0.0",
+    "expo-dev-client": "~55.0.0",
+    "expo-status-bar": "~3.0.9",
+    "expo-style-bridge": "file:..",
+    "react": "19.2.0",
+    "react-native": "0.83.6"
+  },
+  "private": true
+}

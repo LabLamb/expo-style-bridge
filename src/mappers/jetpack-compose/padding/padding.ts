@@ -1,7 +1,7 @@
-import { padding } from "@expo/ui/jetpack-compose";
+import { ModifierConfig } from "@/types";
+import { paddingAll } from "@expo/ui/jetpack-compose/modifiers";
 import { PaddingStyle } from "@/mappers/styles";
-import { ExpoModifier } from "@expo/ui/build/types";
 
-export default function convertPadding(style: PaddingStyle): ExpoModifier {
-  return padding(0);
+export default function convertPadding(style: PaddingStyle): ModifierConfig {
+  return paddingAll(style.padding ?? 0);
 }

@@ -1,12 +1,11 @@
 /**
  * SwiftUI converters barrel export
- * Re-exports all SwiftUI-specific converters
+ * Re-exports all SwiftUI-specific converters from domain groups
  */
 
-export { paddingConverter } from "./padding/converter";
-export { opacityConverter } from "./opacity/converter";
-export { zIndexConverter } from "./zIndex/converter";
-export { hiddenConverter } from "./hidden/converter";
-export { clippedConverter } from "./clipped/converter";
-export { foregroundColorConverter } from "./foreground-color/converter";
-export { backgroundColorConverter } from "./background-color/converter";
+export * from "./layout";
+export * from "./appearance";
+export * from "./effects";
+export * from "./text";
+export * from "./transform";
+export * from "./interaction";

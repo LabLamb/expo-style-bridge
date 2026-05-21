@@ -1,10 +1,5 @@
-import type {
-  FlexStyle,
-  TransformsStyle,
-  ViewStyle,
-  ImageStyle,
-} from "react-native";
-import { ViewModifier } from "@expo/ui/swift-ui/modifiers";
+import type { FlexStyle, TransformsStyle, ViewStyle } from "react-native";
+import type { ViewModifier } from "@expo/ui/swift-ui/modifiers";
 import type {
   PaddingStyle,
   OpacityStyle,
@@ -12,7 +7,20 @@ import type {
   VisibilityStyle,
   ClippingStyle,
   ColorStyle,
-} from "@/mappers";
+  DimensionStyle,
+  BorderStyle,
+  ShadowStyle,
+  TransformStyle,
+  TextStyle,
+  TintStyle,
+} from "@/mappers/styles";
+
+// Local copy of ModifierConfig since @expo/ui 55+ no longer exports it from a public path
+export interface ModifierConfig {
+  $type: string;
+  $scope?: string;
+  [key: string]: unknown;
+}
 
 // Re-export style types for external use
 export type {
@@ -22,39 +30,53 @@ export type {
   VisibilityStyle,
   ClippingStyle,
   ColorStyle,
+  DimensionStyle,
+  BorderStyle,
+  ShadowStyle,
+  TransformStyle,
+  TextStyle,
+  TintStyle,
 };
 
-/**
- * Strict type containing ONLY the directly mappable style properties
- * from SwiftUI modifiers to React Native styles.
- * All property types are derived from React Native's official types.
- */
+// =============================================================================
+// DirectMappableStyle
+// The strict intersection of all sizing and style properties supported by
+// expo-style-bridge.
+//
+// EXPLICITLY EXCLUDED (Layout & Behaviour):
+//   margin*, flex*, flexDirection, justifyContent, alignItems, alignSelf,
+//   position, top, left, right, bottom, start, end, gap*, rowGap, columnGap,
+//   pointerEvents, onLayout, testID, accessibility*, hitSlop, role, etc.
+//
+// These are blocked at the type level so users get build-time errors.
+// =============================================================================
 
-export type DimensionStyle =
-  | "width"
-  | "height"
-  | "minWidth"
-  | "maxWidth"
-  | "minHeight"
-  | "maxHeight";
-
-export type DirectMappableStyle = PaddingStyle &
-  OpacityStyle &
-  ZIndexStyle &
-  VisibilityStyle &
-  ClippingStyle &
-  ColorStyle &
+export type DirectMappableStyle =
+  // Sizing
   DimensionStyle &
-  Pick<FlexStyle, "aspectRatio"> &
-  Pick<TransformsStyle, "transform"> &
-  Pick<ViewStyle, "borderColor" | "borderWidth">;
+    // Box model (internal)
+    PaddingStyle &
+    // Visual style
+    OpacityStyle &
+    ZIndexStyle &
+    VisibilityStyle &
+    ClippingStyle &
+    ColorStyle &
+    BorderStyle &
+    ShadowStyle &
+    TransformStyle &
+    TintStyle &
+    TextStyle;
 
-/**
- * Function type for style converters.
- * Takes a style object and current modifiers array, returns updated modifiers array.
- */
-export type ConverterFunction = (
+// =============================================================================
+// Converter Function Type
+// =============================================================================
+
+export type ConverterFunction<M = ViewModifier> = (
   style: DirectMappableStyle,
-  modifiers: ViewModifier[]
-) => ViewModifier[];
+  modifiers: M[],
+) => M[];
 
+// Platform-specific aliases for readability
+export type SwiftUIConverterFunction = ConverterFunction<ViewModifier>;
+export type ComposeConverterFunction = ConverterFunction<ModifierConfig>;

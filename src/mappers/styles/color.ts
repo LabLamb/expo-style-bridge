@@ -1,8 +1,15 @@
-/**
- * Color style for UI modifiers.
- * Maps backgroundColor and color properties to foregroundColor and background modifiers.
- */
+import type { ColorValue } from "react-native";
+
+export interface GradientValue {
+  gradient: {
+    colors: ColorValue[];
+    locations?: number[];
+    startPoint?: { x: number; y: number };
+    endPoint?: { x: number; y: number };
+  };
+}
+
 export type ColorStyle = {
-  backgroundColor?: string;
-  color?: string;
+  backgroundColor?: ColorValue | GradientValue;
+  color?: ColorValue;
 };

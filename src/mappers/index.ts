@@ -12,4 +12,10 @@ export type {
   VisibilityStyle,
   ClippingStyle,
   ColorStyle,
+  DimensionStyle,
+  BorderStyle,
+  ShadowStyle,
+  TransformStyle,
+  TextStyle,
+  TintStyle,
 } from "./styles";
