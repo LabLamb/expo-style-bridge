@@ -9,10 +9,12 @@
     "web": "expo start --web"
   },
   "dependencies": {
-    "@expo/ui": "55.0.17",
-    "expo": "~55.0.0",
-    "expo-dev-client": "~55.0.0",
-    "expo-status-bar": "~3.0.9",
+    "@expo/ui": "~56.0.0",
+    "expo": "~56.0.0",
+    "expo-dev-client": "~56.0.0",
+    "expo-status-bar": "~56.0.0",
+    "react-native-reanimated": "~4.3.0",
+    "react-native-worklets": "~0.8.0",
     "expo-style-bridge": "file:..",
     "react": "19.2.0",
     "react-native": "0.83.6"

@@ -15,7 +15,9 @@ import type {
   TintStyle,
 } from "@/mappers/styles";
 
-// Local copy of ModifierConfig since @expo/ui 55+ no longer exports it from a public path
+// Local copy of ModifierConfig for backward compatibility with @expo/ui 55.
+// v56+ exports ModifierConfig from public paths, but keeping a local copy ensures
+// the library works across both versions without forcing consumers to upgrade.
 export interface ModifierConfig {
   $type: string;
   $scope?: string;
